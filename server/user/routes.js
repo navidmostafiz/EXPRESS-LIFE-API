@@ -1,8 +1,9 @@
-var express  = require('express');
+var express = require('express');
 //import { getUser, getUserById, addUser } from './controller';
 var userController = require('./controller.js');
 var userRoutes = express.Router();
-console.log('express api root router loaded');
+var counter = require('../../counter');
+console.log('* user api root router loaded', counter());
 
 //we bind each user api methods to a user controller methods
 

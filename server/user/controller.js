@@ -1,5 +1,5 @@
 //code format: ES5
-console.log('express api controller loaded');
+console.log('* express api controller loaded');
 
 var users = [
     { id: 1, userName: 'navidmostafiz', firstName: 'Navid', lastname: 'Mostafiz' },

@@ -1,13 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var path = require('path');
 var app = express();
-
 var apiRouting = require('./routes.js');
-
-// view engine setup
-// app.set('views', path.join(__dirname, '../views'));
-// app.set('view engine', 'pug');
+var counter = require('./counter');
+console.log('* express app loaded', counter());
 
 //json persing middleware
 app.use(bodyParser.json());

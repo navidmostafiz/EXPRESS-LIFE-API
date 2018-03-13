@@ -3,7 +3,8 @@
 var express = require('express');
 var userRoutes = require('./server/user/routes');
 var router = express.Router();
-console.log('react + express api root route added to server');
+var counter = require('./counter');
+console.log('* express api root route loaded', counter());
 /* RESTful user API */
 
 //default api route

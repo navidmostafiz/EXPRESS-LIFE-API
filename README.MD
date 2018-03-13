@@ -1,5 +1,5 @@
-# REACT-LIFE
-REACT LIFE CYCLE
+# REACT-LIFE-API
+NODE EXPRESS API LIFE CYCLE - This project is a part of the REACT-LIFE project
 
 ### :beetle: The Stack
 * NodeJs - 
