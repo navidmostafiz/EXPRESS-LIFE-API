@@ -1,12 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var app = express();
 var apiRouting = require('./routes.js');
-var counter = require('./counter');
-console.log('* express app loaded', counter());
+//var broadcast = require('./broadcast');
+var broadcast = require('./broadcast');
+broadcast('express app loaded', null);
 
 //json persing middleware
 app.use(bodyParser.json());
+
+//cross-server
+app.use(cors());
 
 
 /*instead of writing restful web api get,put,post methods here, 

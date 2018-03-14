@@ -3,8 +3,8 @@
 var express = require('express');
 var userRoutes = require('./server/user/routes');
 var router = express.Router();
-var counter = require('./counter');
-console.log('* express api root route loaded', counter());
+var broadcast = require('./broadcast');
+//broadcast('express api root route loaded', null);
 /* RESTful user API */
 
 //default api route

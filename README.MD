@@ -1,13 +1,12 @@
 # REACT-LIFE-API
 NODE EXPRESS API LIFE CYCLE - This project is a part of the REACT-LIFE project
 
+A. mongoDB-Mongoose
+B. MySQL-Sequalize
+
 ### :beetle: The Stack
 * NodeJs - 
 * Node Express - Restful API
-* Axios - Async(promise based) Restful API request handler (w/ JSON formatter, XSRF)
-
-* ReactJs, ReactDom, React-Route - component based UI library
-* Redux - common state layer across mutiple components(dumb), containers (smart component)
 
 * MongoDB - NOSQL non-schema, non relational DB
 * Mongoose - ORM for Mongo
@@ -19,8 +18,6 @@ NODE EXPRESS API LIFE CYCLE - This project is a part of the REACT-LIFE project
 * JWT (JSON Web Token) - local Auth
 * BCrypt - hashing encryption
 
-* style-loader - Webpack loader that can load some CSS and inject it into the document via a <link> tag.
-* css-loader - is the loader that can parse a CSS file and apply various transforms to it. Crucially it has a CSS Modules mode that can take our CSS and hash the classes as mentioned above
 
 ## :beetle: Steps To Install
 * 1) cmd> mkdir app_name
