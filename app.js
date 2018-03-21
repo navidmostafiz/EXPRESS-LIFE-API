@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var app = express();
 var apiRouting = require('./routes.js');
-//var broadcast = require('./broadcast');
 var broadcast = require('./broadcast');
 broadcast('express app loaded', null);
 

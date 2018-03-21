@@ -2,13 +2,14 @@
 console.log('* express api controller loaded');
 
 var users = [
-    { id: 1, userName: 'navidmostafiz', firstName: 'Navid', lastname: 'Mostafiz' },
-    { id: 2, userName: 'mohaiminul', firstName: 'Mohaiminul', lastname: 'Islam' }
+    { firstName: 'Navid', lastName: 'Mostafiz', status: 'Active', role: 'Administrator', id: 1 },
+    { firstName: 'Mohaiminul', lastName: 'Islam', status: 'Active', role: 'User', id: 2 },
+    { firstName: 'nafees', lastName: 'Mahbub', status: 'Active', role: 'User', id: 2 }
 ];
 
 //get user
 module.exports.getUser = function (request, response, next) {
-    console.log('server.user.controller.getUser');
+    console.log('server.user.controller.getUsers');
     return response.status(200).json(users);
 }
 
@@ -24,8 +25,8 @@ module.exports.addUser = function (request, response, next) {
 
 //get user by Id
 module.exports.getUserById = function (request, response, next) {
-    console.log('server.user.controller.getUserById');
     var userId = request.params._id;
+    console.log('server.user.controller.getUserById(' + userId + ')');
     users.forEach(function (user) {
         if (user.id == userId) {
             return response.status(200).json(user);
@@ -35,10 +36,10 @@ module.exports.getUserById = function (request, response, next) {
 
 //update user
 module.exports.updateUser = function (request, response, next) {
-    console.log('server.user.controller.updateUser');
-    var userId = request.params._id; //not using it, grabbing is form body
+    console.log('server.user.controller.updateUser(' + request.body.id + request.body.firstName, request.body.lastName + ')');
+    //var userId = request.params._id; //not using it, grabbing is form body
     var userToUpdate = request.body;
-    
+
     //create new user list with replacing the element that has matching id
     var tempUsers = [];
     users.forEach(function (user) {
