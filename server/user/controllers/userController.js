@@ -1,98 +1,71 @@
-var User = require('../models/user');
-console.log('* express api controller loaded');
+//code format: ES5
+console.log('express api controller loaded');
 
-// var users = [
-//     { _id: 1, firstName: 'Navid', lastName: 'Mostafiz', status: 'Active', role: 'Administrator' },
-//     { firstName: 'Mohaiminul', lastName: 'Islam', status: 'Active', role: 'User', id: 2 },
-//     { firstName: 'nafees', lastName: 'Mahbub', status: 'Active', role: 'User', id: 3 }
-// ];
+var users = [
+    { _id: "1", firstName: "Navid", lastName: "Mostafiz", emailAddress: "nm@gmail.com", status: "Active", role: "Subscriber" },
+    { _id: "2", firstName: "Mohaiminul", lastName: "Islam", emailAddress: "mi@gmail.com", status: "Active", role: "Subscriber" },
+    { _id: "3", firstName: "Nafees", lastName: "Mahbub", emailAddress: "nam@gmail.com", status: "Active", role: "Subscriber" }
+];
 
 //get user
 module.exports.getAllUser = function (request, response, next) {
-    console.log('userController.getAllUser()');
-    User.find().sort({
-        createdAt: -1,
-    }).exec((err, users) => {
-        if (err) return next(err);
-        return response.status(200).json({
-            success: true,
-            message: 'Get all user',
-            data: users,
-        });
-    });
+    console.log('server.user.controller.getUser');
+    return response.status(200).json(users);
 }
 
 //add new user
 module.exports.addUser = function (request, response, next) {
-    console.log('userController.addUser');
-    var newUser = new User();
-    Object.assign(newUser, request.body, {
-        password: newUser.generateHash(request.body.password),
-    });
-    console.log('\t new user added with data: ', newUser);
-    newUser.save(function (err, user) {
-        if (err) return next(err);
-
-        return response.status(201).json({
-            success: true,
-            message: 'Created user!',
-            data: user,
-        });
-    });
+    console.log('server.user.controller.addUser');
+    var newUser = request.body;
+    console.log('newUser ', newUser);
+    newUser.id = users.length + 1;
+    users.push(newUser);
+    return response.status(200).json({ message: 'new user created' });
 }
 
 //get user by Id
 module.exports.getUserById = function (request, response, next) {
+    console.log('server.user.controller.getUserById');
     var userId = request.params._id;
-    console.log('userController.getUserById(' + userId + ')');
-    User.findById(ruserId)
-        .exec((err, user) => {
-            if (err) return next(err);
-            console.log('\t user returned: ', user);
-            return response.status(200).json({
-                success: true,
-                message: 'Get user',
-                data: user,
-            });
-        });
+    users.forEach(function (user) {
+        if (user.id == userId) {
+            return response.status(200).json(user);
+        };
+    });
 }
 
 //update user
 module.exports.updateUser = function (request, response, next) {
-    console.log('userController.updateUser(' + request.body.id + request.body.firstName, request.body.lastName + ')');
-    User.findById(request.params._id, function (err, user) {
-        if (err) return next(err);
+    console.log('server.user.controller.updateUser');
+    var userId = request.params._id; //not using it, grabbing is form body
+    var userToUpdate = request.body;
 
-        user.firstName = request.body.firstName;
-        user.lastName = request.body.lastName;
-        user.emailAddress = request.body.emailAddress;
-        user.status = request.body.status;
-
-        user.save(function (err) {
-            if (err) return next(err);
-
-            return response.status(201).json({
-                success: true,
-                message: 'Updated user!',
-                data: user
-            });
-        });
+    //create new user list with replacing the element that has matching id
+    var tempUsers = [];
+    users.forEach(function (user) {
+        if (user.id == userToUpdate.id) {
+            console.log('userToUpdate ', userToUpdate);
+            tempUsers.push(userToUpdate);
+        } else { tempUsers.push(user); }
     });
+    users = tempUsers;
+
+    return response.status(200).json({ message: 'user updated' });
 }
 
 //delete user
 module.exports.deleteUser = function (request, response, next) {
-    console.log('userController.deleteUser: not functional');
-    // var userId = request.params._id;
+    console.log('server.user.controller.deleteUser');
+    var userId = request.params._id;
 
-    // //create new user list without the elemnt that has matching id
-    // var tempUsers = [];
-    // users.forEach(function (user) {
-    //     if (user.id != userId) {
-    //         tempUsers.push(user);
-    //     };
-    // });
-    // users = tempUsers;
+    //create new user list without the elemnt that has matching id
+    var tempUsers = [];
+    users.forEach(function (user) {
+        if (user.id != userId) {
+            tempUsers.push(user);
+        };
+    });
+    users = tempUsers;
 
-    // return response.status(200).json({ message: 'user deleted' });
+    return response.status(200).json({ message: 'user deleted' });
 }
