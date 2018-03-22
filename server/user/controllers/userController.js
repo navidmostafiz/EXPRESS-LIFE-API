@@ -1,5 +1,5 @@
 //code format: ES5
-console.log('express api controller loaded');
+console.log('* express api userController loaded');
 
 var users = [
     { _id: "1", firstName: "Navid", lastName: "Mostafiz", emailAddress: "nm@gmail.com", status: "Active", role: "Subscriber" },
@@ -10,7 +10,11 @@ var users = [
 //get user
 module.exports.getAllUser = function (request, response, next) {
     console.log('server.user.controller.getUser');
-    return response.status(200).json(users);
+    return response.status(200).json({
+        success: true,
+        message: 'Get all user',
+        data: users,
+    });
 }
 
 //add new user
@@ -20,7 +24,11 @@ module.exports.addUser = function (request, response, next) {
     console.log('newUser ', newUser);
     newUser.id = users.length + 1;
     users.push(newUser);
-    return response.status(200).json({ message: 'new user created' });
+    return response.status(201).json({
+        success: true,
+        message: 'New User Created!',
+        data: newUser,
+    });
 }
 
 //get user by Id
@@ -29,7 +37,11 @@ module.exports.getUserById = function (request, response, next) {
     var userId = request.params._id;
     users.forEach(function (user) {
         if (user.id == userId) {
-            return response.status(200).json(user);
+            return response.status(200).json({
+                success: true,
+                message: 'Get user by Id',
+                data: user,
+            });
         };
     });
 }
@@ -50,7 +62,11 @@ module.exports.updateUser = function (request, response, next) {
     });
     users = tempUsers;
 
-    return response.status(200).json({ message: 'user updated' });
+    return response.status(201).json({
+        success: true,
+        message: 'User Updated!',
+        data: userToUpdate
+    });
 }
 
 //delete user
@@ -67,5 +83,9 @@ module.exports.deleteUser = function (request, response, next) {
     });
     users = tempUsers;
 
-    return response.status(200).json({ message: 'user deleted' });
+    return response.status(201).json({
+        success: true,
+        message: 'User Deleted!',
+        data: userToUpdate
+    });
 }
