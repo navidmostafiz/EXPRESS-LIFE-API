@@ -1,10 +1,9 @@
 //code format: ES5
 //central place to merge all routes from different modules
 var express = require('express');
-var userRoutes = require('./server/user/routes');
 var router = express.Router();
-var broadcast = require('./broadcast');
-//broadcast('express api root route loaded', null);
+var userRoutes = require('./server/user/routes/routes');
+console.log('* express api root route loaded');
 /* RESTful user API */
 
 //default api route

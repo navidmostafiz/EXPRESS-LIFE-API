@@ -1,10 +1,11 @@
+import User from '../models/user';
 //code format: ES5
 console.log('* express api controller loaded');
 
 var users = [
-    { firstName: 'Navid', lastName: 'Mostafiz', status: 'Active', role: 'Administrator', id: 1 },
+    { _id: 1, firstName: 'Navid', lastName: 'Mostafiz', status: 'Active', role: 'Administrator' },
     { firstName: 'Mohaiminul', lastName: 'Islam', status: 'Active', role: 'User', id: 2 },
-    { firstName: 'nafees', lastName: 'Mahbub', status: 'Active', role: 'User', id: 2 }
+    { firstName: 'nafees', lastName: 'Mahbub', status: 'Active', role: 'User', id: 3 }
 ];
 
 //get user

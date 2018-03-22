@@ -30,6 +30,11 @@ B. MySQL-Sequalize
 * 8) create .babelrc at root and paste { "presets": ["react"] }
 * 9) cmd> npm install --save-dev webpack webpack-dev-server html-webpack-plugin
 
+START MONGODB: cmd> sudo service mongod start
+STOP MONGODB:  cmd> sudo service mongod stop
+RESTART MONGODB:  cmd> sudo service mongod restart
+USING MONGODB SHELL:  cmd> mongo --host 127.0.0.1:27017
+
 ## :beetle: Build & Start the app
 * To build the project: cmd> npm run build
 * To start the server and run attached project app: cmd> npm run start

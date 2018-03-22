@@ -1,15 +1,13 @@
 var express = require('express');
-//import { getUser, getUserById, addUser } from './controller';
-var userController = require('./controller.js');
+var userController = require('../controllers/userController');
 var userRoutes = express.Router();
-var broadcast = require('../../broadcast');
-broadcast('user api root router loaded', null);
+console.log('* user api root router loaded');
 //we bind each user api methods to a user controller methods
 
 //FOR GET & POST
 //localhost:3000/api/users/
 userRoutes.route('/')
-  .get(userController.getUser)
+  .get(userController.getAllUser)
   .post(userController.addUser);
 //.post(verifyToken, addUser);
 
