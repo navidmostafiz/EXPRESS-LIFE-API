@@ -1,11 +1,7 @@
 //code format: ES5
+var users = require('../models/user');
 console.log('* express api userController loaded');
 
-var users = [
-    { _id: "1", firstName: "Navid", lastName: "Mostafiz", emailAddress: "nm@gmail.com", status: "Active", role: "Subscriber" },
-    { _id: "2", firstName: "Mohaiminul", lastName: "Islam", emailAddress: "mi@gmail.com", status: "Active", role: "Subscriber" },
-    { _id: "3", firstName: "Nafees", lastName: "Mahbub", emailAddress: "nam@gmail.com", status: "Active", role: "Subscriber" }
-];
 
 //get user
 module.exports.getAllUser = function (request, response, next) {
